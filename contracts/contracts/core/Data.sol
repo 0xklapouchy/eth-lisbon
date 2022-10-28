@@ -31,7 +31,7 @@ library Data {
             });
     }
 
-    function packKyc(Kyc calldata kyc) internal pure returns (bytes memory) {
+    function packKyc(Kyc memory kyc) internal pure returns (bytes memory) {
         return abi.encode(kyc.id, kyc.age, kyc.country, kyc.timestamp);
     }
 

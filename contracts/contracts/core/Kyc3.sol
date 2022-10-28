@@ -26,4 +26,13 @@ contract Kyc3 is Data3 {
     function getTimestamp() public view returns (uint256) {
         return getKycData().timestamp;
     }
+
+    function packKyc(
+        bytes32 id,
+        uint8 age,
+        uint16 country,
+        uint32 timestamp
+    ) external pure returns (bytes memory) {
+        return Data.packKyc(Data.Kyc(id, age, country, timestamp));
+    }
 }
