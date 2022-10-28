@@ -31,6 +31,22 @@ abstract contract Data3 {
     mapping(address => bool) internal _signers;
 
     // -----------------------------------
+    // Constructor
+    // -----------------------------------
+
+    constructor(address[] memory signers) {
+        uint256 length = signers.length;
+
+        for (uint256 i = 0; i < length; ) {
+            _signers[signers[i]] = true;
+
+            unchecked {
+                i++;
+            }
+        }
+    }
+
+    // -----------------------------------
     // Getters
     // -----------------------------------
 
