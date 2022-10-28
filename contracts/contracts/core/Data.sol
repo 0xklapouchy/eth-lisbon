@@ -12,6 +12,11 @@ library Data {
         uint32 timestamp;
     }
 
+    struct Whitelist {
+        bytes32 id;
+        uint32 timestamp;
+    }
+
     function unpackKyc(bytes calldata data) internal pure returns (Kyc memory) {
         if (data.length != 128) {
             revert Error_InvalidLength();
@@ -28,5 +33,29 @@ library Data {
 
     function packKyc(Kyc calldata kyc) internal pure returns (bytes memory) {
         return abi.encode(kyc.id, kyc.age, kyc.country, kyc.timestamp);
+    }
+
+    function unpackWhitelist(bytes calldata data)
+        internal
+        pure
+        returns (Whitelist memory)
+    {
+        if (data.length != 64) {
+            revert Error_InvalidLength();
+        }
+
+        return
+            Whitelist({
+                id: bytes32(data[0:32]),
+                timestamp: uint32(bytes4(data[62:64]))
+            });
+    }
+
+    function packWhitelist(Whitelist calldata whitelist)
+        internal
+        pure
+        returns (bytes memory)
+    {
+        return abi.encode(whitelist.id, whitelist.timestamp);
     }
 }
