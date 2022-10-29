@@ -31,10 +31,6 @@ library Data {
             });
     }
 
-    function packKyc(Kyc memory kyc) internal pure returns (bytes memory) {
-        return abi.encode(kyc.id, kyc.age, kyc.country, kyc.timestamp);
-    }
-
     function unpackWhitelist(bytes calldata data)
         internal
         pure
@@ -49,13 +45,5 @@ library Data {
                 id: bytes32(data[0:32]),
                 timestamp: uint32(bytes4(data[62:64]))
             });
-    }
-
-    function packWhitelist(Whitelist memory whitelist)
-        internal
-        pure
-        returns (bytes memory)
-    {
-        return abi.encode(whitelist.id, whitelist.timestamp);
     }
 }
