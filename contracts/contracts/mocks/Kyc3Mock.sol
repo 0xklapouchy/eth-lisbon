@@ -14,15 +14,17 @@ contract Kyc3Mock is Kyc3 {
     address public to;
 
     function example(uint256 amount_, address to_) external {
-        if (getAge() < 21) {
+        Data.Kyc memory kyc = getKycData();
+
+        if (kyc.age < 21) {
             revert Error_Age();
         }
 
-        if (getCountry() == 33) {
+        if (kyc.country == 33) {
             revert Error_Country();
         }
 
-        if (block.timestamp > getTimestamp()) {
+        if (block.timestamp > kyc.timestamp + 6 hours) {
             revert Error_Timestamp();
         }
 
@@ -33,12 +35,5 @@ contract Kyc3Mock is Kyc3 {
 
     function addSigner(address signer) public {
         _signers[signer] = true;
-    }
-
-    function validateSignature(
-        bytes calldata signedData,
-        bytes calldata signature
-    ) public view {
-        _validateSignature(signedData, signature);
     }
 }
