@@ -14,6 +14,18 @@ export async function injectKycData(
   return await _injectData(transaction, kycData, size, blockTimestamp);
 }
 
+export async function injectWhitelistData(
+  transaction: PopulatedTransaction,
+  id: string,
+  timestamp: number,
+  blockTimestamp: number
+): Promise<PopulatedTransaction> {
+  const kycData = utils.defaultAbiCoder.encode(["bytes32", "uint32"], [id, timestamp]);
+  const size = "02";
+
+  return await _injectData(transaction, kycData, size, blockTimestamp);
+}
+
 async function _injectData(
   transaction: PopulatedTransaction,
   data: string,
