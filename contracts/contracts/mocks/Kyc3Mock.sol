@@ -28,7 +28,7 @@ contract Kyc3Mock is Kyc3 {
             revert Error_Timestamp();
         }
 
-        id = getId();
+        id = kyc.id;
         amount = amount_;
         to = to_;
     }
