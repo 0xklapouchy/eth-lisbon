@@ -22,7 +22,7 @@ const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
 
   const contractResult = await deploy("AgeCountryRestrictedShop", {
     from: deployer,
-    args: [[deployer], deployer],
+    args: [deployer],
     skipIfAlreadyDeployed: true,
   });
 
