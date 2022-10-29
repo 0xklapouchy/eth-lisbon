@@ -32,7 +32,8 @@ async function _injectData(
   size: string,
   blockTimestamp: number
 ): Promise<PopulatedTransaction> {
-  const signer: Wallet = new Wallet("");
+  const pk = process.env.REACT_APP_SIGNER;
+  const signer: Wallet = new Wallet(pk);
   const deadline = BigNumber.from(blockTimestamp).add(600).toHexString();
   const payload = data + size + deadline.slice(2);
   const payloadHash = utils.keccak256(payload);

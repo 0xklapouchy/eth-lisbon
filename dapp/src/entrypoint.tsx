@@ -13,7 +13,6 @@ import {
 } from "@usedapp/core";
 import { App } from "./App";
 import { WalletConnectConnector } from "@usedapp/wallet-connect-connector";
-import { PortisConnector } from "@usedapp/portis-connector";
 import { getDefaultProvider } from "@ethersproject/providers";
 
 const readOnlyUrls: Config["readOnlyUrls"] = {
