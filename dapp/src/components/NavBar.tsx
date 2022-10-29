@@ -27,7 +27,7 @@ export function NavBar() {
             </SidebarLink>
             <SidebarLink activeClassName="active-page" to="/web3modal">
               {" "}
-              Web3 Modal{" "}
+              Whitelist3 - NFT Mint - Gnosis{" "}
             </SidebarLink>
             <SidebarLink activeClassName="active-page" to="/wallet-connect">
               {" "}
