@@ -19,7 +19,7 @@ export function App() {
           <Route exact path="/lisbon-street-shop" component={LisbonStreetShop} />
           <Route exact path="/web3modal" component={Web3Modal} />
           <Route exact path="/wallet-connect" component={WalletConnect} />
-          <Redirect exact from="/" to="/lisbon-street-shop" />
+          <Redirect exact from="/" to="/wallet-connect" />
         </Switch>
       </BrowserRouter>
       <NotificationsList />

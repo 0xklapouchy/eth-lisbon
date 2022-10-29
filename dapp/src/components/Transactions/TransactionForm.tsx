@@ -38,11 +38,9 @@ const StatusBlock = ({ color, text, icon }: StatusBlockProps) => (
   </InformationRow>
 );
 
-interface StatusAnimationProps {
-  transaction: TransactionStatus;
-}
+interface StatusAnimationProps {}
 
-export const StatusAnimation = ({ transaction }: StatusAnimationProps) => {
+export const StatusAnimation = ({}: StatusAnimationProps) => {
   const [showTransactionStatus, setShowTransactionStatus] = useState(false);
   const [timer, setTimer] = useState(
     setTimeout(() => {
@@ -50,78 +48,24 @@ export const StatusAnimation = ({ transaction }: StatusAnimationProps) => {
     }, 1)
   );
 
-  useEffect(() => {
-    setShowTransactionStatus(true);
-    clearTimeout(timer);
-
-    if (transaction.status !== "Mining" && transaction.status !== "CollectingSignaturePool")
-      setTimer(setTimeout(() => setShowTransactionStatus(false), 5000));
-  }, [transaction]);
-
-  return (
-    <AnimationWrapper>
-      <AnimatePresence initial={false} exitBeforeEnter>
-        {showTransactionStatus && transactionErrored(transaction) && (
-          <StatusBlock
-            color={Colors.Red["400"]}
-            text={transaction?.errorMessage || ""}
-            icon={<ExclamationIcon />}
-            key={transaction?.chainId + transaction.status}
-          />
-        )}
-        {showTransactionStatus && transaction.status === "Mining" && (
-          <StatusBlock
-            color="black"
-            text="Transaction is being mined"
-            icon={<SpinnerIcon />}
-            key={transaction?.chainId + transaction.status}
-          />
-        )}
-        {showTransactionStatus && transaction.status === "CollectingSignaturePool" && (
-          <StatusBlock
-            color="black"
-            text="Waiting for wallet owners to sign the transaction"
-            icon={<SpinnerIcon />}
-            key={transaction?.chainId + transaction.status}
-          />
-        )}
-        {showTransactionStatus && transaction.status === "Success" && (
-          <StatusBlock
-            color="green"
-            text="Transaction successful"
-            icon={<CheckIcon />}
-            key={transaction?.chainId + transaction.status}
-          />
-        )}
-      </AnimatePresence>
-    </AnimationWrapper>
-  );
+  return <AnimationWrapper></AnimationWrapper>;
 };
 
 interface InputComponentProps {
   send: (value: string) => void;
   ticker: string;
-  transaction: TransactionStatus;
 }
 
-const InputComponent = ({ ticker, transaction, send }: InputComponentProps) => {
+const InputComponent = ({ ticker, send }: InputComponentProps) => {
   const { account } = useEthers();
   const [value, setValue] = useState("0");
   const [disabled, setDisabled] = useState(false);
 
   const onClick = () => {
     if (Number(value) > 0) {
-      setDisabled(true);
       send(value);
     }
   };
-
-  useEffect(() => {
-    if (transaction.status != "Mining") {
-      setDisabled(false);
-      setValue("0");
-    }
-  }, [transaction]);
 
   return (
     <InputRow>
@@ -135,7 +79,7 @@ const InputComponent = ({ ticker, transaction, send }: InputComponentProps) => {
         disabled={disabled}
       />
       <FormTicker>{ticker}</FormTicker>
-      <SmallButton disabled={!account || disabled} onClick={onClick}>
+      <SmallButton disabled={false} onClick={onClick}>
         Send
       </SmallButton>
     </InputRow>
@@ -147,10 +91,9 @@ interface TransactionFormProps {
   send: (value: string) => void;
   title: string;
   ticker: string;
-  transaction: TransactionStatus;
 }
 
-export const TransactionForm = ({ balance, send, title, ticker, transaction }: TransactionFormProps) => (
+export const TransactionForm = ({ balance, send, title, ticker }: TransactionFormProps) => (
   <SmallContentBlock>
     <TitleRow>
       <CellTitle>{title}</CellTitle>
@@ -161,8 +104,8 @@ export const TransactionForm = ({ balance, send, title, ticker, transaction }: T
     <LabelRow>
       <Label htmlFor={`${ticker}Input`}>How much? 0.01 ETH per 🤪</Label>
     </LabelRow>
-    <InputComponent ticker={"🤪"} transaction={transaction} send={send} />
-    <StatusAnimation transaction={transaction} />
+    <InputComponent ticker={"🤪"} send={send} />
+    <StatusAnimation />
   </SmallContentBlock>
 );
 

@@ -1,15 +1,5 @@
 import React from "react";
-import {
-  Handshaking,
-  Sidebar,
-  SidebarContainer,
-  SidebarLinkDescription,
-  SidebarLink,
-  SidebarNav,
-  SidebarNavLinks,
-  ToMain,
-  ToMainBottom,
-} from "./base/base";
+import { Sidebar, SidebarContainer, SidebarLink, SidebarNav, SidebarNavLinks, ToMain, ToMainBottom } from "./base/base";
 
 export function NavBar() {
   return (
@@ -18,7 +8,7 @@ export function NavBar() {
         <SidebarNav>
           <ToMain href="/">
             <span>Data3 - Oracle Injection</span>
-            <ToMainBottom>Build with useDapp</ToMainBottom>
+            <ToMainBottom>Builded with useDapp</ToMainBottom>
           </ToMain>
           <SidebarNavLinks>
             <SidebarLink activeClassName="active-page" to="/lisbon-street-shop">
