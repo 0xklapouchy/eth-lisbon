@@ -13,6 +13,13 @@ if (!process.env.MNEMONIC) {
   mnemonic = process.env.MNEMONIC;
 }
 
+let privKey: string;
+if (!process.env.PRIVATE) {
+  throw new Error("Please set your PRIVATE in a .env file");
+} else {
+  privKey = process.env.PRIVATE;
+}
+
 let infuraApiKey: string;
 if (!process.env.INFURA_API_KEY) {
   throw new Error("Please set your INFURA_API_KEY in a .env file");
@@ -61,35 +68,30 @@ if (alchemyUrl && process.env.FORK_ENABLED && mnemonic) {
 }
 
 if (mnemonic) {
+  networks.cronos = {
+    chainId: 25,
+    url: "https://evm-cronos.crypto.org/",
+    accounts: [privKey],
+  };
+
   networks.gnosis = {
     chainId: 100,
-    url: "https://rpc.xdaichain.com/",
-    accounts: {
-      mnemonic,
-    },
+    url: "https://rpc.gnosischain.com",
+    accounts: [privKey],
   };
-  networks.cronos = {
-    chainId: 77,
-    url: "https://sokol.poa.network",
-    accounts: {
-      mnemonic,
-    },
-  };
+
   networks.polygon = {
     chainId: 137,
-    url: "https://rpc-mainnet.maticvigil.com",
-    accounts: {
-      mnemonic,
-    },
+    url: "https://polygon-rpc.com",
+    accounts: [privKey],
+    gasPrice: 400000000000,
   };
 }
 
 if (infuraApiKey && mnemonic) {
   networks.goerli = {
     url: `https://goerli.infura.io/v3/${infuraApiKey}`,
-    accounts: {
-      mnemonic,
-    },
+    accounts: [privKey],
   };
 
   networks.mainnet = {
