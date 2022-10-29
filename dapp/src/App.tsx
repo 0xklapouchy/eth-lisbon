@@ -6,7 +6,7 @@ import { NavBar } from "./components/NavBar";
 import { GlobalStyle } from "./global/GlobalStyle";
 import { LisbonStreetShop } from "./pages/LisbonStreetShop";
 import { NotificationsList } from "./components/Transactions/History";
-import { Web3Modal } from "./pages/Web3Modal";
+import { EthLisbonNft } from "./pages/EthLisbonNft";
 import { WalletConnect } from "./pages/WalletConnect";
 
 export function App() {
@@ -17,9 +17,8 @@ export function App() {
         <NavBar />
         <Switch>
           <Route exact path="/lisbon-street-shop" component={LisbonStreetShop} />
-          <Route exact path="/web3modal" component={Web3Modal} />
-          <Route exact path="/wallet-connect" component={WalletConnect} />
-          <Redirect exact from="/" to="/wallet-connect" />
+          <Route exact path="/eth-lisbon-nft" component={EthLisbonNft} />
+          <Redirect exact from="/" to="/eth-lisbon-nft" />
         </Switch>
       </BrowserRouter>
       <NotificationsList />

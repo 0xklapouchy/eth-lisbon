@@ -13,15 +13,11 @@ export function NavBar() {
           <SidebarNavLinks>
             <SidebarLink activeClassName="active-page" to="/lisbon-street-shop">
               {" "}
-              Kyc3 - Lisbon Shop - Cronos{" "}
+              Kyc3 - Module Example - Cronos{" "}
             </SidebarLink>
-            <SidebarLink activeClassName="active-page" to="/web3modal">
+            <SidebarLink activeClassName="active-page" to="/eth-lisbon-nft">
               {" "}
-              Whitelist3 - NFT Mint - Gnosis{" "}
-            </SidebarLink>
-            <SidebarLink activeClassName="active-page" to="/wallet-connect">
-              {" "}
-              WalletConnect example{" "}
+              Whitelist3 - Module Example - Gnosis{" "}
             </SidebarLink>
           </SidebarNavLinks>
         </SidebarNav>

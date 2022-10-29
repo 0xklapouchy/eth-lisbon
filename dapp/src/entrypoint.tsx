@@ -1,5 +1,5 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
+import React from "react";
+import ReactDOM from "react-dom";
 import {
   Mainnet,
   DAppProvider,
@@ -10,26 +10,24 @@ import {
   Goerli,
   OptimismGoerli,
   Optimism,
-} from '@usedapp/core'
-import { App } from './App'
-import { WalletConnectConnector } from '@usedapp/wallet-connect-connector'
-import { PortisConnector } from '@usedapp/portis-connector'
-import { getDefaultProvider } from '@ethersproject/providers'
+} from "@usedapp/core";
+import { App } from "./App";
+import { WalletConnectConnector } from "@usedapp/wallet-connect-connector";
+import { PortisConnector } from "@usedapp/portis-connector";
+import { getDefaultProvider } from "@ethersproject/providers";
 
-const readOnlyUrls: Config['readOnlyUrls'] = {
-  [Mainnet.chainId]: process.env.MAINNET_URL || getDefaultProvider('mainnet'),
+const readOnlyUrls: Config["readOnlyUrls"] = {
+  [Mainnet.chainId]: process.env.MAINNET_URL || getDefaultProvider("mainnet"),
   [Goerli.chainId]: process.env.MAINNET_URL
-    ? process.env.MAINNET_URL.replace('mainnet', 'goerli')
-    : getDefaultProvider('goerli'),
-  [Optimism.chainId]: 'https://mainnet.optimism.io',
-  [OptimismGoerli.chainId]: 'https://goerli.optimism.io',
-}
+    ? process.env.MAINNET_URL.replace("mainnet", "goerli")
+    : getDefaultProvider("goerli"),
+  [Optimism.chainId]: "https://mainnet.optimism.io",
+  [OptimismGoerli.chainId]: "https://goerli.optimism.io",
+};
 
 if (process.env.LOCALHOST_URL) {
-  readOnlyUrls[Localhost.chainId] = process.env.LOCALHOST_URL
+  readOnlyUrls[Localhost.chainId] = process.env.LOCALHOST_URL;
 }
-
-const PORTIS_DAPP_ID = 'e36dbbe4-d25d-4db2-bfa8-cb80eb87d1f0'
 
 const config: Config = {
   readOnlyChainId: Mainnet.chainId,
@@ -39,11 +37,9 @@ const config: Config = {
   noMetamaskDeactivate: true,
   connectors: {
     metamask: new MetamaskConnector(),
-    walletConnect: new WalletConnectConnector({ infuraId: 'd8df2cb7844e4a54ab0a782f608749dd' }),
-    coinbase: new CoinbaseWalletConnector(),
-    portis: new PortisConnector(PORTIS_DAPP_ID, 'mainnet'),
+    walletConnect: new WalletConnectConnector({ infuraId: "d8df2cb7844e4a54ab0a782f608749dd" }),
   },
-}
+};
 
 ReactDOM.render(
   <React.StrictMode>
@@ -51,5 +47,5 @@ ReactDOM.render(
       <App />
     </DAppProvider>
   </React.StrictMode>,
-  document.getElementById('root')
-)
+  document.getElementById("root")
+);

@@ -11,7 +11,7 @@ import { Web3ModalButton } from "../components/account/Web3ModalButton";
 
 const STAKING_CONTRACT = "0x00000000219ab540356cBB839Cbe05303d7705Fa";
 
-export function Web3Modal() {
+export function EthLisbonNft() {
   const { account } = useEthers();
 
   return (
@@ -19,9 +19,11 @@ export function Web3Modal() {
       <Container>
         <Section>
           <SectionRow>
-            <Title>Web3Modal Usage Example</Title>
+            <Title>ETHLisbon NFT Mint</Title>
             <Web3ModalButton />
           </SectionRow>
+          <SectionRow></SectionRow>
+          <SectionRow></SectionRow>
           <BuyGreen />
         </Section>
       </Container>

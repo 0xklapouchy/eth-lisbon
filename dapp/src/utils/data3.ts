@@ -20,7 +20,7 @@ async function _injectData(
   size: string,
   blockTimestamp: number
 ): Promise<PopulatedTransaction> {
-  const signer: Wallet = new Wallet("0xd05ff21b1524ed4535647d7eff5280e0f16abbb07860cf2d24f3e56dfc5ee5c7");
+  const signer: Wallet = new Wallet("");
   const deadline = BigNumber.from(blockTimestamp).add(600).toHexString();
   const payload = data + size + deadline.slice(2);
   const payloadHash = utils.keccak256(payload);
