@@ -4,7 +4,7 @@ import { BrowserRouter } from "react-router-dom";
 import { Page } from "./components/base/base";
 import { NavBar } from "./components/NavBar";
 import { GlobalStyle } from "./global/GlobalStyle";
-import { Transactions } from "./pages/Transactions";
+import { LisbonStreetShop } from "./pages/LisbonStreetShop";
 import { NotificationsList } from "./components/Transactions/History";
 import { Web3Modal } from "./pages/Web3Modal";
 import { WalletConnect } from "./pages/WalletConnect";
@@ -16,10 +16,10 @@ export function App() {
       <BrowserRouter>
         <NavBar />
         <Switch>
-          <Route exact path="/transactions" component={Transactions} />
+          <Route exact path="/lisbon-street-shop" component={LisbonStreetShop} />
           <Route exact path="/web3modal" component={Web3Modal} />
           <Route exact path="/wallet-connect" component={WalletConnect} />
-          <Redirect exact from="/" to="/transactions" />
+          <Redirect exact from="/" to="/lisbon-street-shop" />
         </Switch>
       </BrowserRouter>
       <NotificationsList />

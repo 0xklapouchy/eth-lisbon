@@ -2,21 +2,21 @@ import React from "react";
 import styled from "styled-components";
 import { AccountButton } from "../components/account/AccountButton";
 import { Container, MainContent, Section, SectionRow } from "../components/base/base";
-import { DepositEth, WithdrawEth } from "../components/Transactions/Forms";
+import { BuyGreen } from "../components/Transactions/Forms";
 import { Title } from "../typography/Title";
 
-export function Transactions() {
+export function LisbonStreetShop() {
   return (
     <MainContent>
       <Container>
         <Section>
           <SectionRow>
-            <Title>Transactions</Title>
+            <Title>Lisbon Street Shop</Title>
             <AccountButton />
           </SectionRow>
-          <TableGrid>
-            <DepositEth />
-          </TableGrid>
+          <SectionRow></SectionRow>
+          <SectionRow></SectionRow>
+          <BuyGreen />
         </Section>
       </Container>
     </MainContent>

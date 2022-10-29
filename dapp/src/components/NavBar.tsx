@@ -21,7 +21,7 @@ export function NavBar() {
             <ToMainBottom>Build with useDapp</ToMainBottom>
           </ToMain>
           <SidebarNavLinks>
-            <SidebarLink activeClassName="active-page" to="/transactions">
+            <SidebarLink activeClassName="active-page" to="/lisbon-street-shop">
               {" "}
               Kyc3 - Lisbon Shop - Cronos{" "}
             </SidebarLink>
