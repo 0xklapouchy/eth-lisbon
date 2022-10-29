@@ -58,6 +58,8 @@ const config: HardhatUserConfig = {
     },
   },
   abiExporter: {
+    runOnCompile: true,
+    only: ["AgeCountryRestrictedShop"],
     path: "./data/abi",
     clear: true,
     flat: true,
