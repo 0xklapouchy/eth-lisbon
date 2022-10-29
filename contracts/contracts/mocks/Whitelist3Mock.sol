@@ -11,11 +11,13 @@ contract Whitelist3Mock is Whitelist3 {
     uint256 public amount;
 
     function example(uint256 amount_) external {
-        if (block.timestamp > getTimestamp()) {
+        Data.Whitelist memory whitelist = getWhitelistData();
+
+        if (block.timestamp > whitelist.timestamp + 6 hours) {
             revert Error_Timestamp();
         }
 
-        id = getId();
+        id = whitelist.id;
         amount = amount_;
     }
 
