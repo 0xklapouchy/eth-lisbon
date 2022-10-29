@@ -18,4 +18,12 @@ contract Whitelist3 is Data3 {
     function getTimestamp() public view returns (uint256) {
         return getWhitelistData().timestamp;
     }
+
+    function packWhitelist(bytes32 id, uint32 timestamp)
+        external
+        pure
+        returns (bytes memory)
+    {
+        return Data.packWhitelist(Data.Whitelist(id, timestamp));
+    }
 }

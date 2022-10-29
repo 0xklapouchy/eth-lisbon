@@ -51,7 +51,7 @@ library Data {
             });
     }
 
-    function packWhitelist(Whitelist calldata whitelist)
+    function packWhitelist(Whitelist memory whitelist)
         internal
         pure
         returns (bytes memory)
