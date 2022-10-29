@@ -12,25 +12,24 @@ const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
   const isTestEnvironment = chainId === 31337 || chainId === 1337;
 
   cyan("\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-  cyan("       ExampleContract - Deploy Script");
+  cyan("       LisbonShop - Deploy Script");
   cyan("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
 
   dim(`network: ${chainName(chainId)} (${isTestEnvironment ? "local" : "remote"})`);
   dim(`deployer: ${deployer}`);
 
-  cyan("\nDeploying ExampleContract...");
+  cyan("\nDeploying LisbonShop...");
 
-  const exampleContractResult = await deploy("ExampleContract", {
+  const contractResult = await deploy("AgeCountryRestrictedShop", {
     from: deployer,
-    args: [],
+    args: [[deployer], deployer],
     skipIfAlreadyDeployed: true,
   });
 
-  displayResult("ExampleContract", exampleContractResult);
+  displayResult("LisbonShop", contractResult);
 
   green(`Done!`);
 };
 
 export default func;
-func.tags = ["Tags"];
-func.dependencies = ["Dependencies"];
+func.tags = ["LisbonShop"];
