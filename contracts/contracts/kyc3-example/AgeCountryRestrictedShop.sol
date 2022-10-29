@@ -14,27 +14,20 @@ contract AgeCountryRestrictedShop is Ownable, Kyc3 {
     error Error_Age();
     error Error_Country();
     error Error_Timestamp();
-    error Error_Stablecoin();
+    error Error_Value();
+
+    uint256 public constant PRICE = 1e16;
 
     address public beneficiary;
-    mapping(address => bool) public isStablecoin;
 
-    event ItemSold(
-        address indexed stablecoin,
-        address indexed purchaser,
-        uint256 amount
-    );
+    event ItemSold(address indexed purchaser, uint256 amount);
     event SignerAdded(address indexed signer);
     event BeneficiaryTransferred(
         address indexed previousBeneficiary,
         address indexed newBeneficiary
     );
 
-    constructor(
-        address[] memory signers,
-        address beneficiary_,
-        address[] memory stablecoins
-    ) {
+    constructor(address[] memory signers, address beneficiary_) {
         uint256 length = signers.length;
         for (uint256 i = 0; i < length; ) {
             _signers[signers[i]] = true;
@@ -47,15 +40,6 @@ contract AgeCountryRestrictedShop is Ownable, Kyc3 {
 
         emit BeneficiaryTransferred(beneficiary, beneficiary_);
         beneficiary = beneficiary_;
-
-        length = stablecoins.length;
-        for (uint256 i = 0; i < length; ) {
-            isStablecoin[stablecoins[i]] = true;
-
-            unchecked {
-                i++;
-            }
-        }
     }
 
     modifier onlyAdultAndFromPortugal() {
@@ -63,15 +47,13 @@ contract AgeCountryRestrictedShop is Ownable, Kyc3 {
         _;
     }
 
-    function buyItem(address stablecoin, uint256 amount)
-        external
-        onlyAdultAndFromPortugal
-    {
-        if (!isStablecoin[stablecoin]) {
-            revert Error_Stablecoin();
+    function buyItem(uint256 amount) external payable onlyAdultAndFromPortugal {
+        if (msg.value < amount * PRICE) {
+            revert Error_Value();
         }
 
-        emit ItemSold(stablecoin, msg.sender, amount);
+        emit ItemSold(msg.sender, amount);
+        payable(beneficiary).transfer(msg.value);
     }
 
     function addSigner(address signer) external onlyOwner {
