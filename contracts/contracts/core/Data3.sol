@@ -78,7 +78,9 @@ abstract contract Data3 {
         uint256 validatedDataLength = uint16(size) * 32;
         uint256 validateDataOffset = sizeOffset - validatedDataLength;
 
-        return msg.data[validateDataOffset:validatedDataLength];
+        return
+            msg.data[validateDataOffset:validateDataOffset +
+                validatedDataLength];
     }
 
     function _validateSignature(
