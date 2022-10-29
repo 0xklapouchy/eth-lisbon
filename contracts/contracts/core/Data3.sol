@@ -99,7 +99,7 @@ abstract contract Data3 {
 
     function _validateDeadline(uint256 deadline) internal view {
         if (
-            block.timestamp > deadline ||
+            block.timestamp < deadline ||
             block.timestamp - deadline > _MAX_DEADLINE
         ) {
             revert Error_Deadline();
