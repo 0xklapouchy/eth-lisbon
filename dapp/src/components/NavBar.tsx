@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 import {
   Handshaking,
   Sidebar,
@@ -9,7 +9,7 @@ import {
   SidebarNavLinks,
   ToMain,
   ToMainBottom,
-} from './base/base'
+} from "./base/base";
 
 export function NavBar() {
   return (
@@ -17,66 +17,25 @@ export function NavBar() {
       <SidebarContainer>
         <SidebarNav>
           <ToMain href="/">
-            <span>useDapp</span>
-            <ToMainBottom>
-              Ethereum <Handshaking>🤝</Handshaking> React
-            </ToMainBottom>
+            <span>Data3 - Oracle Injection</span>
+            <ToMainBottom>Build with useDapp</ToMainBottom>
           </ToMain>
           <SidebarNavLinks>
-            <SidebarLink activeClassName="active-page" to="/balance">
-              {' '}
-              Balance{' '}
-            </SidebarLink>
-            <SidebarLink activeClassName="active-page" to="/prices">
-              {' '}
-              Prices{' '}
-            </SidebarLink>
-            <SidebarLink activeClassName="active-page" to="/ens">
-              {' '}
-              ENS{' '}
-            </SidebarLink>
-            <SidebarLink activeClassName="active-page" to="/block">
-              {' '}
-              Block{' '}
-            </SidebarLink>
-            <SidebarLink activeClassName="active-page" to="/tokens">
-              {' '}
-              Tokens{' '}
-            </SidebarLink>
-            <SidebarLink activeClassName="active-page" to="/send">
-              {' '}
-              Send Ether{' '}
-            </SidebarLink>
             <SidebarLink activeClassName="active-page" to="/transactions">
-              {' '}
-              Transactions{' '}
+              {" "}
+              Kyc3 - Lisbon Shop - Cronos{" "}
             </SidebarLink>
             <SidebarLink activeClassName="active-page" to="/web3modal">
-              {' '}
-              Web3 Modal{' '}
-            </SidebarLink>
-            <SidebarLink activeClassName="active-page" to="/web3react">
-              {' '}
-              Web3 React
-              <br />
-              Connector{' '}
-            </SidebarLink>
-            <SidebarLink activeClassName="active-page" to="/multichain">
-              {' '}
-              Multichain
-              <br /> <SidebarLinkDescription>&nbsp;experimental</SidebarLinkDescription>
+              {" "}
+              Web3 Modal{" "}
             </SidebarLink>
             <SidebarLink activeClassName="active-page" to="/wallet-connect">
-              {' '}
-              WalletConnect example{' '}
-            </SidebarLink>
-            <SidebarLink activeClassName="active-page" to="/connectors">
-              {' '}
-              Connectors{' '}
+              {" "}
+              WalletConnect example{" "}
             </SidebarLink>
           </SidebarNavLinks>
         </SidebarNav>
       </SidebarContainer>
     </Sidebar>
-  )
+  );
 }
