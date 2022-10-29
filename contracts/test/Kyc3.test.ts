@@ -18,7 +18,6 @@ const Error_Timestamp: string = "Error_Timestamp()";
 describe("Kyc3 Module Tests", () => {
   const [deployer, user, signer] = provider.getWallets() as Wallet[];
   let kyc3mock: Kyc3Mock;
-
   let now: BigNumber;
 
   describe("getKycData function", () => {
@@ -86,7 +85,7 @@ describe("Kyc3 Module Tests", () => {
       const id = "0x12ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffabcd";
       const age = 23;
       const country = 4;
-      const timestamp = now.toNumber();
+      const timestamp = now.sub(duration.hours(6)).toNumber();
 
       const unsignedTx = await injectKycData(
         await kyc3mock.connect(user).populateTransaction.example(100, "0x0000000000000000000000000000000000000009"),
