@@ -3,43 +3,24 @@
 pragma solidity 0.8.15;
 
 import "@openzeppelin/contracts/access/Ownable.sol";
-import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
-import "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol";
-
 import "../core/Kyc3.sol";
 
 contract AgeCountryRestrictedShop is Ownable, Kyc3 {
-    using SafeERC20 for IERC20;
-
     error Error_Age();
     error Error_Country();
     error Error_Timestamp();
-    error Error_Value();
-
-    uint256 public constant PRICE = 1e16;
-
-    address public beneficiary;
+    error Error_InsufficientValue();
+    error Error_TransferFailed();
 
     event ItemSold(address indexed purchaser, uint256 amount);
-    event SignerAdded(address indexed signer);
-    event BeneficiaryTransferred(
-        address indexed previousBeneficiary,
-        address indexed newBeneficiary
-    );
+    event SingerUpdated(address indexed signer, bool isSigner);
 
-    constructor(address[] memory signers, address beneficiary_) {
-        uint256 length = signers.length;
-        for (uint256 i = 0; i < length; ) {
-            _signers[signers[i]] = true;
-            emit SignerAdded(signers[i]);
+    uint256 public constant PRICE = 0.01 ether;
+    address public beneficiary;
 
-            unchecked {
-                i++;
-            }
-        }
-
-        emit BeneficiaryTransferred(beneficiary, beneficiary_);
-        beneficiary = beneficiary_;
+    constructor(address signer) {
+        _signers[signer] = true;
+        emit SingerUpdated(signer, true);
     }
 
     modifier onlyAdultAndFromPortugal() {
@@ -49,15 +30,20 @@ contract AgeCountryRestrictedShop is Ownable, Kyc3 {
 
     function buyItem(uint256 amount) external payable onlyAdultAndFromPortugal {
         if (msg.value < amount * PRICE) {
-            revert Error_Value();
+            revert Error_InsufficientValue();
         }
 
         emit ItemSold(msg.sender, amount);
-        payable(beneficiary).transfer(msg.value);
     }
 
-    function addSigner(address signer) external onlyOwner {
-        _signers[signer] = true;
+    function withdraw() external onlyOwner {
+        (bool success, ) = msg.sender.call{ value: address(this).balance }("");
+        if (!success) revert Error_TransferFailed();
+    }
+
+    function setSigner(address signer, bool isSinger) external onlyOwner {
+        _signers[signer] = isSinger;
+        emit SingerUpdated(signer, isSinger);
     }
 
     function _validateKyc() private view {
