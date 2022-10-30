@@ -36,6 +36,10 @@ export const chainName = (chainId: number): string => {
       return "Mainnet";
     case 5:
       return "Goerli";
+    case 25:
+      return "Cronos";
+    case 100:
+      return "Gnosis";
     case 137:
       return "Polygon";
     default:

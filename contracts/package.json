@@ -10,6 +10,8 @@
     "deploy": "hardhat deploy --write true --network",
     "deploy:hardhat": "hardhat deploy --write true --network hardhat --tags",
     "deploy:goerli": "hardhat deploy --write true --network goerli --tags",
+    "deploy:gnosis": "hardhat deploy --write true --network gnosis --tags",
+    "deploy:cronos": "hardhat deploy --write true --network cronos --tags",
     "verify": "hardhat etherscan-verify --license MIT --solc-input --network",
     "test": "hardhat test"
   },
