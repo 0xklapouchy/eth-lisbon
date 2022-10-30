@@ -1,6 +1,8 @@
 {
-  "name": "@usedapp/example",
-  "version": "0.5.3",
+  "name": "@data3/dapp",
+  "version": "0.0.1",
+  "description": "ETH Lisbon Hackathon Project Dapp",
+  "license": "MIT",
   "private": true,
   "scripts": {
     "start": "webpack serve --mode development"

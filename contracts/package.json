@@ -1,7 +1,7 @@
 {
-  "name": "@ethlisbon-hackathon/contracts",
+  "name": "@data3/contracts",
   "version": "0.0.1",
-  "description": "ETH Lisbon Hackathon Contracts",
+  "description": "ETH Lisbon Hackathon Project Contracts",
   "license": "MIT",
   "scripts": {
     "clean": "hardhat clean",
