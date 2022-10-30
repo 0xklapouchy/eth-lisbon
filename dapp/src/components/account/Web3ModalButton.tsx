@@ -23,6 +23,7 @@ export const Web3ModalButton = () => {
   }, [error, account]);
 
   const activateProvider = async () => {
+    const infuraId = process.env.REACT_APP_INFURA;
     const providerOptions = {
       injected: {
         display: {
@@ -35,7 +36,7 @@ export const Web3ModalButton = () => {
         package: WalletConnectProvider,
         options: {
           bridge: "https://bridge.walletconnect.org",
-          infuraId: "d8df2cb7844e4a54ab0a782f608749dd",
+          infuraId: infuraId,
         },
       },
     };

@@ -6,7 +6,6 @@ import {
   Config,
   Localhost,
   MetamaskConnector,
-  CoinbaseWalletConnector,
   Goerli,
   OptimismGoerli,
   Optimism,
@@ -28,6 +27,8 @@ if (process.env.LOCALHOST_URL) {
   readOnlyUrls[Localhost.chainId] = process.env.LOCALHOST_URL;
 }
 
+const infuraId = process.env.REACT_APP_INFURA;
+
 const config: Config = {
   readOnlyChainId: Mainnet.chainId,
   readOnlyUrls,
@@ -36,7 +37,7 @@ const config: Config = {
   noMetamaskDeactivate: true,
   connectors: {
     metamask: new MetamaskConnector(),
-    walletConnect: new WalletConnectConnector({ infuraId: "d8df2cb7844e4a54ab0a782f608749dd" }),
+    walletConnect: new WalletConnectConnector({ infuraId: infuraId }),
   },
 };
 

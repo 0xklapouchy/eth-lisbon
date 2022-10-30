@@ -20,9 +20,10 @@ export function WalletConnect() {
   const [signedMessage, setSignedMessage] = useState("");
 
   async function onConnect() {
+    const infuraId = process.env.REACT_APP_INFURA;
     try {
       const provider = new WalletConnectProvider({
-        infuraId: "2f29a024d30d49f8ba713c248c33f25c",
+        infuraId: infuraId,
       });
       await provider.enable();
       await activate(provider);
