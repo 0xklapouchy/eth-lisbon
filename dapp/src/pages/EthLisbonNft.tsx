@@ -22,7 +22,7 @@ export function EthLisbonNft() {
 
   async function onMint() {
     const nftInterface = new utils.Interface(NFTMintNoSiblingsAbi);
-    const nftAddress = "0x1d40d657e9551D0cd7f807D6ad1f11694767e0cB";
+    const nftAddress = "0xe4cf580B7a9Ed2e599D70f4e43a909f605940995";
     const contract = new Contract(nftAddress, nftInterface) as NFTMintNoSiblings;
 
     const provider = library as Web3Provider;

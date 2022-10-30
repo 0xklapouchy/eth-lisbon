@@ -14,7 +14,7 @@ export const BuyForm = () => {
   const { timestamp } = useBlockMeta();
   const etherBalance = useEtherBalance(account);
 
-  const shopAddress = "0x81Eb558A49A795E6147D3c86084C453f5a12A964";
+  const shopAddress = "0xb6eCEC9906572F6c7dc6dEcA7fC5995Db82BE46A";
   const shopInterface = new utils.Interface(AgeCountryRestrictedShopAbi);
   const contract = new Contract(shopAddress, shopInterface) as AgeCountryRestrictedShop;
 

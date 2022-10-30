@@ -9,6 +9,8 @@ import {
   Goerli,
   OptimismGoerli,
   Optimism,
+  Cronos,
+  Gnosis,
 } from "@usedapp/core";
 import { App } from "./App";
 import { WalletConnectConnector } from "@usedapp/wallet-connect-connector";
@@ -21,6 +23,8 @@ const readOnlyUrls: Config["readOnlyUrls"] = {
     : getDefaultProvider("goerli"),
   [Optimism.chainId]: "https://mainnet.optimism.io",
   [OptimismGoerli.chainId]: "https://goerli.optimism.io",
+  [Cronos.chainId]: "https://evm.cronos.org",
+  [Gnosis.chainId]: "https://rpc.gnosischain.com",
 };
 
 if (process.env.LOCALHOST_URL) {
