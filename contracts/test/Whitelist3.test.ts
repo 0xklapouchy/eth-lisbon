@@ -41,7 +41,7 @@ describe("Whitelist3 Module Tests", () => {
 
     it("should revert when timestamp to old", async () => {
       const id = "0x12ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffabcd";
-      const timestamp = now.sub(duration.hours(6)).toNumber();
+      const timestamp = now.sub(duration.hours(9)).toNumber();
 
       const unsignedTx = await injectWhitelistData(
         await whitelist3mock.connect(user).populateTransaction.example(7777),
