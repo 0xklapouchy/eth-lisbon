@@ -9,12 +9,12 @@ import { injectKycData } from "../../utils";
 import { AgeCountryRestrictedShop } from "../../../../contracts/typechain/AgeCountryRestrictedShop";
 import AgeCountryRestrictedShopAbi from "../../../../contracts/data/abi//AgeCountryRestrictedShop.json";
 
-export const BuyGreen = () => {
+export const BuyForm = () => {
   const { account, library } = useEthers();
   const { timestamp } = useBlockMeta();
   const etherBalance = useEtherBalance(account);
 
-  const shopAddress = "0x555d8eed2d10D5A8b9440B25925D62B62b039551";
+  const shopAddress = "0x81Eb558A49A795E6147D3c86084C453f5a12A964";
   const shopInterface = new utils.Interface(AgeCountryRestrictedShopAbi);
   const contract = new Contract(shopAddress, shopInterface) as AgeCountryRestrictedShop;
 

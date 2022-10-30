@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { Web3ModalButton } from "../components/account/Web3ModalButton";
 import { Container, MainContent, Section, SectionRow } from "../components/base/base";
-import { BuyGreen } from "../components/Transactions/Forms";
+import { BuyForm } from "../components/Transactions/Forms";
 import { Title } from "../typography/Title";
 
 export function LisbonStreetShop() {
@@ -16,7 +16,7 @@ export function LisbonStreetShop() {
           </SectionRow>
           <SectionRow></SectionRow>
           <SectionRow></SectionRow>
-          <BuyGreen />
+          <BuyForm />
         </Section>
       </Container>
     </MainContent>
