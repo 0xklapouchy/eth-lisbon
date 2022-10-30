@@ -7,7 +7,6 @@ import { GlobalStyle } from "./global/GlobalStyle";
 import { LisbonStreetShop } from "./pages/LisbonStreetShop";
 import { NotificationsList } from "./components/Transactions/History";
 import { EthLisbonNft } from "./pages/EthLisbonNft";
-import { WalletConnect } from "./pages/WalletConnect";
 
 export function App() {
   return (

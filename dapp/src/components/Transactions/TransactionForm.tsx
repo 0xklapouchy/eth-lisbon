@@ -1,15 +1,12 @@
 import { formatEther } from "@ethersproject/units";
-import { TransactionStatus, useEthers, transactionErrored } from "@usedapp/core";
-import React, { ReactElement, useEffect, useState } from "react";
+import { useEthers } from "@usedapp/core";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { TextBold } from "../../typography/Text";
 import { ContentBlock } from "../base/base";
 import { Button } from "../base/Button";
 import { BorderRad, Colors } from "../../global/styles";
 import { BigNumber } from "ethers";
-import { SpinnerIcon, CheckIcon, ExclamationIcon } from "./Icons";
-
-import { AnimatePresence, motion } from "framer-motion";
 
 const formatter = new Intl.NumberFormat("en-us", {
   minimumFractionDigits: 4,
@@ -18,38 +15,6 @@ const formatter = new Intl.NumberFormat("en-us", {
 
 const formatBalance = (balance: BigNumber | undefined) =>
   formatter.format(parseFloat(formatEther(balance ?? BigNumber.from("0"))));
-
-interface StatusBlockProps {
-  color: string;
-  text: string;
-  icon: ReactElement;
-}
-
-const StatusBlock = ({ color, text, icon }: StatusBlockProps) => (
-  <InformationRow
-    layout
-    initial={{ opacity: 0, y: -50 }}
-    animate={{ opacity: 1, y: 0 }}
-    exit={{ opacity: 0, y: 50 }}
-    key={text}
-  >
-    <IconContainer style={{ fill: color }}>{icon}</IconContainer>
-    <div style={{ color: color, textAlign: "center" }}>{text}</div>
-  </InformationRow>
-);
-
-interface StatusAnimationProps {}
-
-export const StatusAnimation = ({}: StatusAnimationProps) => {
-  const [showTransactionStatus, setShowTransactionStatus] = useState(false);
-  const [timer, setTimer] = useState(
-    setTimeout(() => {
-      void 0;
-    }, 1)
-  );
-
-  return <AnimationWrapper></AnimationWrapper>;
-};
 
 interface InputComponentProps {
   send: (value: string) => void;
@@ -105,7 +70,7 @@ export const TransactionForm = ({ balance, send, title, ticker }: TransactionFor
       <Label htmlFor={`${ticker}Input`}>How much? 0.01 ETH per 🤪</Label>
     </LabelRow>
     <InputComponent ticker={"🤪"} send={send} />
-    <StatusAnimation />
+    <LabelRow></LabelRow>
   </SmallContentBlock>
 );
 
@@ -194,30 +159,4 @@ const BalanceWrapper = styled.div`
 
 const SmallContentBlock = styled(ContentBlock)`
   padding: 0;
-`;
-
-const IconContainer = styled.div`
-  margin-right: 15px;
-  height: 40px;
-  width: 40px;
-  float: left;
-`;
-
-const InformationRow = styled(motion.div)`
-  height: 60px;
-  font-size: 14px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  overflow: auto;
-`;
-
-const AnimationWrapper = styled.div`
-  height: 80px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: auto;
-  margin: 10px;
 `;

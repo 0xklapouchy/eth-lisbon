@@ -1,5 +1,5 @@
 import React from "react";
-import { Sidebar, SidebarContainer, SidebarLink, SidebarNav, SidebarNavLinks, ToMain, ToMainBottom } from "./base/base";
+import { Sidebar, SidebarContainer, SidebarNav, SidebarLink, SidebarNavLinks, ToMain, ToMainBottom } from "./base/base";
 
 export function NavBar() {
   return (
